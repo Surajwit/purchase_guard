@@ -1,0 +1,122 @@
+{
+  "doctype": "DocType",
+  "name": "Supplier Price Benchmark",
+  "module": "Purchase Guard",
+  "custom": 0,
+  "allow_rename": 1,
+  "autoname": "format:PG-BENCH-.#####",
+  "track_changes": 1,
+  "field_order": [
+    "company",
+    "item_code",
+    "supplier",
+    "period_start",
+    "period_end",
+    "average_rate",
+    "minimum_rate",
+    "maximum_rate",
+    "quantity_purchased",
+    "total_spend",
+    "variance_from_best_supplier_pct",
+    "is_demo_data"
+  ],
+  "fields": [
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company",
+      "reqd": 1
+    },
+    {
+      "fieldname": "item_code",
+      "label": "Item",
+      "fieldtype": "Link",
+      "options": "Item",
+      "reqd": 1
+    },
+    {
+      "fieldname": "supplier",
+      "label": "Supplier",
+      "fieldtype": "Link",
+      "options": "Supplier",
+      "reqd": 1
+    },
+    {
+      "fieldname": "period_start",
+      "label": "Period Start",
+      "fieldtype": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "period_end",
+      "label": "Period End",
+      "fieldtype": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "average_rate",
+      "label": "Average Rate",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "minimum_rate",
+      "label": "Minimum Rate",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "maximum_rate",
+      "label": "Maximum Rate",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "quantity_purchased",
+      "label": "Quantity Purchased",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "total_spend",
+      "label": "Total Spend",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "variance_from_best_supplier_pct",
+      "label": "Variance From Best Supplier (%)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "is_demo_data",
+      "label": "Demo Data",
+      "fieldtype": "Check",
+      "default": "0",
+      "read_only": 1,
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Purchase Guard Analyst",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "Purchase Guard Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1
+    }
+  ]
+}

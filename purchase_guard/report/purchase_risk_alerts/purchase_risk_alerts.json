@@ -1,0 +1,13 @@
+{
+  "doctype": "Report",
+  "name": "Purchase Risk Alerts",
+  "ref_doctype": "Purchase Risk Alert",
+  "report_name": "Purchase Risk Alerts",
+  "module": "Purchase Guard",
+  "report_type": "Report Builder",
+  "roles": [
+    "Purchase Guard Analyst",
+    "Purchase Guard Manager"
+  ],
+  "add_total_row": 1
+}

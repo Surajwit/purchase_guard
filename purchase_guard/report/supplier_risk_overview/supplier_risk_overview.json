@@ -1,0 +1,13 @@
+{
+  "doctype": "Report",
+  "name": "Supplier Risk Overview",
+  "ref_doctype": "Supplier Risk Assessment",
+  "report_name": "Supplier Risk Overview",
+  "module": "Purchase Guard",
+  "report_type": "Report Builder",
+  "roles": [
+    "Purchase Guard Analyst",
+    "Purchase Guard Manager"
+  ],
+  "add_total_row": 1
+}

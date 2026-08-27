@@ -1,0 +1,130 @@
+{
+  "doctype": "DocType",
+  "name": "Purchase Guard Settings",
+  "module": "Purchase Guard",
+  "custom": 0,
+  "allow_rename": 1,
+  "track_changes": 1,
+  "field_order": [
+    "price_variance_warning_pct",
+    "price_variance_critical_pct",
+    "supplier_price_increase_warning_pct",
+    "supplier_price_increase_critical_pct",
+    "quantity_variance_warning_pct",
+    "high_value_purchase_threshold",
+    "duplicate_invoice_check",
+    "maverick_purchase_check",
+    "supplier_price_intelligence",
+    "automatic_scans",
+    "scan_days",
+    "auto_create_alerts",
+    "section_info",
+    "description"
+  ],
+  "fields": [
+    {
+      "fieldname": "price_variance_warning_pct",
+      "label": "PO Price Variance Warning (%)",
+      "fieldtype": "Float",
+      "default": "5"
+    },
+    {
+      "fieldname": "price_variance_critical_pct",
+      "label": "PO Price Variance Critical (%)",
+      "fieldtype": "Float",
+      "default": "10"
+    },
+    {
+      "fieldname": "supplier_price_increase_warning_pct",
+      "label": "Supplier Price Increase Warning (%)",
+      "fieldtype": "Float",
+      "default": "8"
+    },
+    {
+      "fieldname": "supplier_price_increase_critical_pct",
+      "label": "Supplier Price Increase Critical (%)",
+      "fieldtype": "Float",
+      "default": "15"
+    },
+    {
+      "fieldname": "quantity_variance_warning_pct",
+      "label": "Receipt Quantity Variance Warning (%)",
+      "fieldtype": "Float",
+      "default": "2"
+    },
+    {
+      "fieldname": "high_value_purchase_threshold",
+      "label": "High Value Purchase Threshold",
+      "fieldtype": "Currency",
+      "default": "100000"
+    },
+    {
+      "fieldname": "duplicate_invoice_check",
+      "label": "Duplicate Invoice Check",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "maverick_purchase_check",
+      "label": "Maverick Purchase Check",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "supplier_price_intelligence",
+      "label": "Supplier Price Intelligence",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "automatic_scans",
+      "label": "Automatic Daily Scans",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "scan_days",
+      "label": "Analysis Window (Days)",
+      "fieldtype": "Int",
+      "default": "365"
+    },
+    {
+      "fieldname": "auto_create_alerts",
+      "label": "Create Risk Alerts Automatically",
+      "fieldtype": "Check",
+      "default": "1"
+    },
+    {
+      "fieldname": "section_info",
+      "label": "System",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "HTML",
+      "options": "<p>Purchase Guard uses deterministic ERPNext transaction analysis. No commercial API or external AI service is required.</p>"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Purchase Guard Analyst",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "Purchase Guard Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1
+    }
+  ],
+  "issingle": 1
+}

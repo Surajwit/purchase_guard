@@ -1,0 +1,136 @@
+{
+  "doctype": "DocType",
+  "name": "Supplier Risk Assessment",
+  "module": "Purchase Guard",
+  "custom": 0,
+  "allow_rename": 1,
+  "autoname": "format:PG-RISK-.#####",
+  "track_changes": 1,
+  "field_order": [
+    "supplier",
+    "company",
+    "assessment_date",
+    "risk_score",
+    "risk_level",
+    "purchase_spend",
+    "price_variance_items",
+    "price_competitiveness_score",
+    "invoice_accuracy_score",
+    "delivery_performance_score",
+    "payment_behavior_score",
+    "supplier_concentration_pct",
+    "notes",
+    "is_demo_data"
+  ],
+  "fields": [
+    {
+      "fieldname": "supplier",
+      "label": "Supplier",
+      "fieldtype": "Link",
+      "options": "Supplier",
+      "reqd": 1
+    },
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company",
+      "reqd": 1
+    },
+    {
+      "fieldname": "assessment_date",
+      "label": "Assessment Date",
+      "fieldtype": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "risk_score",
+      "label": "Risk Score",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "risk_level",
+      "label": "Risk Level",
+      "fieldtype": "Select",
+      "options": "Low\nMedium\nHigh\nCritical",
+      "read_only": 1
+    },
+    {
+      "fieldname": "purchase_spend",
+      "label": "Purchase Spend",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "price_variance_items",
+      "label": "Items With Significant Price Variance",
+      "fieldtype": "Int",
+      "read_only": 1
+    },
+    {
+      "fieldname": "price_competitiveness_score",
+      "label": "Price Competitiveness",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "invoice_accuracy_score",
+      "label": "Invoice Accuracy",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "delivery_performance_score",
+      "label": "Delivery Performance",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "payment_behavior_score",
+      "label": "Payment Behavior",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "supplier_concentration_pct",
+      "label": "Company Spend Concentration (%)",
+      "fieldtype": "Percent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "notes",
+      "label": "Assessment Notes",
+      "fieldtype": "Small Text",
+      "read_only": 1
+    },
+    {
+      "fieldname": "is_demo_data",
+      "label": "Demo Data",
+      "fieldtype": "Check",
+      "default": "0",
+      "read_only": 1,
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Purchase Guard Analyst",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1
+    },
+    {
+      "role": "Purchase Guard Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "doctype": "Report",
+  "name": "Supplier Price Intelligence",
+  "ref_doctype": "Supplier Price Benchmark",
+  "report_name": "Supplier Price Intelligence",
+  "module": "Purchase Guard",
+  "report_type": "Report Builder",
+  "roles": [
+    "Purchase Guard Analyst",
+    "Purchase Guard Manager"
+  ],
+  "add_total_row": 1
+}

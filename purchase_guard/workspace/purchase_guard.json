@@ -1,0 +1,20 @@
+{
+  "doctype": "Workspace",
+  "name": "Purchase Guard",
+  "module": "Purchase Guard",
+  "label": "Purchase Guard",
+  "title": "Purchase Guard",
+  "public": 1,
+  "is_standard": 1,
+  "icon": "shield",
+  "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Purchase Guard\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Purchase protection + supplier intelligence for ERPNext.\"}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Risk Alert\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Risk Assessment\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Price Benchmark\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Guard Settings\",\"col\":3}}]",
+  "links": [
+    {"label":"Overview","link_to":"purchase_guard_dashboard","link_type":"Page","type":"Link","hidden":0},
+    {"label":"Risk Alerts","link_to":"Purchase Risk Alert","link_type":"DocType","type":"Link","hidden":0},
+    {"label":"Suppliers","link_to":"Supplier Risk Assessment","link_type":"DocType","type":"Link","hidden":0},
+    {"label":"Price Intelligence","link_to":"price_intelligence","link_type":"Page","type":"Link","hidden":0},
+    {"label":"Purchase Analysis","link_to":"Purchase Risk Alerts","link_type":"Report","type":"Link","hidden":0},
+    {"label":"Supplier Overview","link_to":"Supplier Risk Overview","link_type":"Report","type":"Link","hidden":0},
+    {"label":"Settings","link_to":"Purchase Guard Settings","link_type":"DocType","type":"Link","hidden":0}
+  ]
+}
