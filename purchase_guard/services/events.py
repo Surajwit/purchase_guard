@@ -1,5 +1,5 @@
 import frappe
-from purchase_guard.purchase_guard.services.scanner import analyze_purchase_invoice
+from purchase_guard.services.scanner import analyze_purchase_invoice
 
 def _run(doc):
     settings = frappe.get_single("Purchase Guard Settings")

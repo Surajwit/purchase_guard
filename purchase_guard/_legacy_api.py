@@ -1,10 +1,9 @@
 """
-Backward-compatible Purchase Guard API module.
+Backward-compatible API aliases.
 
-The canonical implementation now lives in purchase_guard.api
-(the api package). This file remains for compatibility with
-older code that may reference purchase_guard.api.py directly
-through filesystem/package tooling.
+Older Purchase Guard code may import these functions from
+purchase_guard._legacy_api. Keep them available while the
+canonical implementation lives in purchase_guard.api.
 """
 
 from purchase_guard.api import (

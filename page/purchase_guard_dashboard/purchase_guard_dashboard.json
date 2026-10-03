@@ -1,8 +1,0 @@
-{
-  "doctype": "Page",
-  "name": "purchase_guard_dashboard",
-  "title": "Purchase Guard",
-  "module": "Purchase Guard",
-  "standard": 1,
-  "roles": ["Purchase Guard Analyst", "Purchase Guard Manager", "System Manager"]
-}

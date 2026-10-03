@@ -4,7 +4,7 @@
   "module": "Purchase Guard",
   "custom": 0,
   "allow_rename": 1,
-  "autoname": "format:PG-ALERT-.#####",
+  "autoname": "PG-ALERT-.#####",
   "track_changes": 1,
   "field_order": [
     "company",

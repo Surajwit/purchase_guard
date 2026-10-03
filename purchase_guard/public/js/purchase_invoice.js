@@ -8,7 +8,7 @@ frappe.ui.form.on("Purchase Invoice", {
         frm.toggle_display("purchase_guard_section", true);
         load_invoice_guard(frm);
         frm.add_custom_button(__("Run Purchase Guard Scan"), function() {
-            frappe.call({method:"purchase_guard.purchase_guard.api.scan_invoice",args:{invoice:frm.doc.name},freeze:true,freeze_message:__("Analyzing purchase risk...")}).then(function(r){
+            frappe.call({method:"purchase_guard.api.scan_invoice",args:{invoice:frm.doc.name},freeze:true,freeze_message:__("Analyzing purchase risk...")}).then(function(r){
                 frappe.show_alert({message:__("{0} finding(s) created",[r.message || 0]),indicator:"blue"});
                 load_invoice_guard(frm);
             });
@@ -16,7 +16,7 @@ frappe.ui.form.on("Purchase Invoice", {
     }
 });
 function load_invoice_guard(frm){
-    frappe.call({method:"purchase_guard.purchase_guard.api.get_invoice_guard",args:{invoice:frm.doc.name}}).then(function(r){
+    frappe.call({method:"purchase_guard.api.get_invoice_guard",args:{invoice:frm.doc.name}}).then(function(r){
         var rows=r.message||[]; var el=frm.fields_dict.purchase_guard_summary.$wrapper;
         if(!rows.length){el.html('<div class="pg-form-empty">✓ No Purchase Guard findings for this invoice.</div>');return;}
         var score=Math.max.apply(null,rows.map(function(x){return Number(x.risk_score||0);}));

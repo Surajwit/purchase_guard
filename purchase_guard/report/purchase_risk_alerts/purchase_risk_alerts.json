@@ -6,8 +6,12 @@
   "module": "Purchase Guard",
   "report_type": "Report Builder",
   "roles": [
-    "Purchase Guard Analyst",
-    "Purchase Guard Manager"
+    {
+      "role": "Purchase Guard Analyst"
+    },
+    {
+      "role": "Purchase Guard Manager"
+    }
   ],
   "add_total_row": 1
 }

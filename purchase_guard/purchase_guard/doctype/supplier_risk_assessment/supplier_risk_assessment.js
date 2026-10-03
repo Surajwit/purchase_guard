@@ -3,7 +3,7 @@ frappe.ui.form.on("Supplier Risk Assessment", {
         if (!frm.is_new()) {
             frm.add_custom_button(__("Recalculate"), () => {
                 frappe.call({
-                    method: "purchase_guard.purchase_guard.services.scanner.update_supplier_risk",
+                    method: "purchase_guard.services.scanner.update_supplier_risk",
                     args: {
                         supplier: frm.doc.supplier,
                         company: frm.doc.company,

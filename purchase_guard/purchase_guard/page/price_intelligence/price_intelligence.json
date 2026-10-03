@@ -1,0 +1,18 @@
+{
+  "doctype": "Page",
+  "name": "price_intelligence",
+  "title": "Price Intelligence",
+  "module": "Purchase Guard",
+  "standard": 1,
+  "roles": [
+    {
+      "role": "Purchase Guard Analyst"
+    },
+    {
+      "role": "Purchase Guard Manager"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}

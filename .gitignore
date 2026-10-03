@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Build/package artifacts
+*.egg-info/
+build/
+dist/
+
+# Backup files
+*.backup
+*.bak
+*.naming-backup
+_repair_backup/
+
+# Local/editor files
+.vscode/
+.DS_Store

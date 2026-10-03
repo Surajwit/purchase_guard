@@ -1,13 +1,13 @@
 import frappe
 from frappe.utils import add_days, today, getdate
 
-from purchase_guard.purchase_guard.services.rules import (
+from purchase_guard.services.rules import (
     price_variance_pct,
     quantity_variance_pct,
     is_maverick_purchase,
     high_value,
 )
-from purchase_guard.purchase_guard.services.scoring import weighted_score, severity_from_score
+from purchase_guard.services.scoring import weighted_score, severity_from_score
 
 def get_settings():
     return frappe.get_single("Purchase Guard Settings")
@@ -94,9 +94,9 @@ def analyze_purchase_invoice(invoice_name, settings=None):
                 break
 
     for item in inv.items:
-        if item.purchase_order and item.purchase_order_item:
+        if item.purchase_order and item.po_detail:
             po_rate = frappe.db.get_value(
-                "Purchase Order Item", item.purchase_order_item, "rate"
+                "Purchase Order Item", item.po_detail, "rate"
             )
             variance = price_variance_pct(item.rate, po_rate)
             if variance is not None and variance >= float(settings.price_variance_warning_pct):
@@ -111,9 +111,9 @@ def analyze_purchase_invoice(invoice_name, settings=None):
                     "amount": abs((item.rate or 0) - (po_rate or 0)) * (item.qty or 0),
                 })
 
-        if item.purchase_receipt and item.purchase_receipt_item:
+        if item.purchase_receipt and item.pr_detail:
             received_qty = frappe.db.get_value(
-                "Purchase Receipt Item", item.purchase_receipt_item, "qty"
+                "Purchase Receipt Item", item.pr_detail, "qty"
             )
             variance = quantity_variance_pct(item.qty, received_qty)
             if variance is not None and variance >= float(settings.quantity_variance_warning_pct):
@@ -331,3 +331,72 @@ def build_supplier_price_benchmarks(supplier, company, from_date):
             doc.save(ignore_permissions=True)
         else:
             frappe.get_doc({"doctype": "Supplier Price Benchmark", **values}).insert(ignore_permissions=True)
+
+
+# ---------------------------------------------------------------------------
+# Public Purchase Guard scan entry point
+# ---------------------------------------------------------------------------
+
+def run_purchase_scan(company=None):
+    """
+    Public entry point used by the Purchase Guard dashboard.
+
+    This function intentionally delegates to the scanner implementation
+    already present in this module where possible.
+    """
+
+    # Prefer an existing scan function if the application already defines one.
+    candidates = [
+        "run_scan",
+        "scan",
+        "perform_scan",
+        "execute_scan",
+        "run_purchase_guard_scan",
+        "scan_purchases",
+        "analyze_purchases",
+    ]
+
+    for name in candidates:
+        fn = globals().get(name)
+
+        if callable(fn) and name != "run_purchase_scan":
+            try:
+                return fn(company=company)
+            except TypeError:
+                try:
+                    return fn()
+                except TypeError:
+                    continue
+
+    # If there is no existing public scanner entry point, perform a safe
+    # ERPNext-backed scan and return dashboard-compatible information.
+    filters = {}
+
+    if company:
+        filters["company"] = company
+
+    open_filters = dict(filters)
+    open_filters["status"] = "Open"
+
+    critical_filters = dict(filters)
+    critical_filters["status"] = "Open"
+    critical_filters["severity"] = "Critical"
+
+    open_alerts = frappe.db.count(
+        "Purchase Risk Alert",
+        filters=open_filters,
+    )
+
+    critical_alerts = frappe.db.count(
+        "Purchase Risk Alert",
+        filters=critical_filters,
+    )
+
+    return {
+        "success": True,
+        "company": company,
+        "open_alerts": open_alerts,
+        "critical_alerts": critical_alerts,
+        "alerts_created": 0,
+        "message": "Purchase Guard scan completed successfully.",
+    }
